@@ -1,41 +1,131 @@
-# Stencil App Starter
+# Tutorial: Deploying a basic Stencil app on Jekyo
 
-Stencil is a compiler for building fast web apps using Web Components.
+Demo app [here](https://stencil-demo.jekyo.app/)
 
-Stencil combines the best concepts of the most popular frontend frameworks into a compile-time rather than run-time tool.  Stencil takes TypeScript, JSX, a tiny virtual DOM layer, efficient one-way data binding, an asynchronous rendering pipeline (similar to React Fiber), and lazy-loading out of the box, and generates 100% standards-based Web Components that run in any browser supporting the Custom Elements v1 spec.
+### Prerequisites
 
-Stencil components are just Web Components, so they work in any major framework or with no framework at all. In many cases, Stencil can be used as a drop in replacement for traditional frontend frameworks given the capabilities now available in the browser, though using it as such is certainly not required.
+Make sure you have [NodeJS](https://nodejs.org/en/download/), [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) and [git](https://github.com/git-guides/install-git) installed.
 
-Stencil also enables a number of key capabilities on top of Web Components, in particular Server Side Rendering (SSR) without the need to run a headless browser, pre-rendering, and objects-as-properties (instead of just strings).
+If it's your first time using **Jekyo**, you can **install** it by running the following command in your terminal:
 
-## Getting Started
+`npm install -g jekyo`
 
-To start a new project using Stencil, clone this repo to a new directory:
+### Sign in to Jekyo
 
-```bash
-npm init stencil app
-```
-
-and run:
-
-```bash
-npm start
-```
-
-To build the app for production, run:
-
-```bash
-npm run build
-```
-
-To run the unit tests once, run:
+You can sign in to Jekyo by running `jekyo user:signin`
 
 ```
-npm test
+➜  ~ jekyo user:signin 
+Your email?: **************
+Your password?: **********
+You have successfully signed in!
+```
+If you don't have a Jekyo account, you can create one in the terminal by running `jekyo user:signup`. 
+
+## 1. Create a basic Stencil app
+
+You can start your Stencil project by using `jekyo create`
+
+Using the **arrows** on your keyboard, select **stencil** and press **enter**.  
+```
+? Select template
+  None Creates only the application
+  expressjs A basic app skeleton using [Express](https://expressjs.com/)     
+  nuxt-js A boilerplate SSR application using [Nuxt.js](https://nuxtjs.org/) 
+❯ stencil A basic starter app using [Stencil](https://stenciljs.com/)
+```
+When prompted, enter the desired name for your Stencil app. 
+
+`Application name?: stencil-tutorial`
+
+This will create a basic Stencil app in the current directory by cloning this [Stencil starter app](https://github.com/jekyo/stencil-getting-started) repository.
+
+```
+Cloning source code... OK
+Application created!
 ```
 
-To run the unit tests and watch for file changes during development, run:
+### Deploy the Stencil app on Jekyo
+
+To deploy the app, first navigate to the newly created directory:
+
+`cd stencil-tutorial`
+
+Now you can deploy this app to Jekyo by running: 
+
+`jekyo deploy`
+
+After a while, you should see something like this:
 
 ```
-npm run test.watch
+➜  Fetching source code ... OK
+➜  Building application, this might take a while ... OK
+➜  Publishing application, this might take a while  ... OK
+➜  Deploying application ... OK        
+➜  Waiting for application to start ... OK
+➜  Visit your app on: https://stencil-tutorial.jekyo.app ... OK
 ```
+
+You can now browse to your Stencil app on https://stencil-tutorial.jekyo.app (replace 'stencil-tutorial' with your app name)
+
+## 2. Deploying an existing Stencil app
+
+Navigate to your local Stencil app directory
+
+`cd my-stencil-app`
+
+Initialize a git repository if you haven't already done so by running `git init`. 
+
+### Create an empty Jekyo app:
+
+`jekyo create` 
+
+Select 'none' using the **arrows** on your keyboard and press **enter**. This will create an app using your current directory. 
+
+```
+? Select template (Use arrow keys)
+❯ None Creates an application from your current directory
+```
+
+Name your app: 
+
+`Application name?: my-stencil-app`
+
+Run `jekyo link` to link your local app to the remote Jekyo app. Select 'my-stencil-app' using the **arrows** on your keyboard and press **enter**.
+
+```
+? Select application (Use arrow keys)
+❯ my-stencil-app
+```
+### Now you can deploy this app to Jekyo by running: 
+
+`jekyo deploy`
+
+After a while, you should see something like this:
+
+```
+➜  Fetching source code ... OK
+➜  Building application, this might take a while ... OK
+➜  Publishing application, this might take a while  ... OK
+➜  Deploying application ... OK        
+➜  Waiting for application to start ... OK
+➜  Visit your app on: https://my-stencil-app.jekyo.app ... OK
+```
+
+You can now browse to your Stencil app on https://my-stencil-app.jekyo.app (replace 'my-stencil-app' with your app name)
+
+## Pushing local changes to Jekyo 
+
+Add the newly modified file(s) to the git index by using [git add](https://www.atlassian.com/git/tutorials/saving-changes)
+
+`git add filename`
+
+Create a [git commit](https://github.com/git-guides/git-commit)
+
+`git commit -m "your commit message"`
+
+Now, simply deploy your app again:
+
+`jekyo deploy`
+
+You will see your changes on your live app after a short while. 
