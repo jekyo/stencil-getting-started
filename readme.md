@@ -76,6 +76,10 @@ Navigate to your local Stencil app directory
 
 Initialize a git repository if you haven't already done so by running `git init`. 
 
+### Edit package.json
+
+Add a port flag in your start line : ` --port $PORT`
+
 ### Create an empty Jekyo app:
 
 `jekyo create` 
